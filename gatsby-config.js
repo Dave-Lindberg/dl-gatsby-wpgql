@@ -1,11 +1,22 @@
 module.exports = {
   siteMetadata: {
-    title: `Gatsby Default Starter`,
+    title: `Dave Lindberg`,
     description: `Kick off your next, great Gatsby project with this default starter. This barebones starter ships with the main Gatsby configuration files you might need.`,
     author: `@gatsbyjs`,
   },
   plugins: [
     `gatsby-plugin-react-helmet`,
+    {
+      resolve: "gatsby-source-graphql",
+      options: {
+        // Remote schema query type. This is an arbitrary name.
+        typeName: "WPGraphQL",
+        // Field name under which it will be available. Used in your Gatsby query. This is also an arbitrary name.
+        fieldName: "wpcontent",
+        // GraphQL endpoint, relative to your WordPress home URL.
+        url: "http://gatsbywpsource.local/graphql",
+      },
+    },
     {
       resolve: `gatsby-source-filesystem`,
       options: {
