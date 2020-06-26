@@ -22,6 +22,10 @@ const GET_PAGES = `
                     content
                     uri
                     isFrontPage
+                    featuredImage {
+                        sourceUrl
+                        altText
+                    }
                 }
             }
         }

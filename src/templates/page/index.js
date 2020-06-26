@@ -1,17 +1,22 @@
 import React from "react"
-
 import Layout from "../../components/layout"
 import SEO from "../../components/seo"
 
 const Page = ({ pageContext }) => {
-  const page = pageContext.page
+  const { page, pageId, title, date, author, featuredImage } = pageContext.page
+  console.log({ pageContext })
 
   return (
     <Layout>
-      <SEO title={page.title} />
+      <SEO title={pageContext.page.title} />
+      <img
+        src={featuredImage.sourceUrl}
+        alt={featuredImage.altText}
+        className="featured-image"
+      />
 
-      <h1>{page.title}</h1>
-      <div dangerouslySetInnerHTML={{ __html: page.content }} />
+      <h1>{pageContext.page.title}</h1>
+      <div dangerouslySetInnerHTML={{ __html: pageContext.page.content }} />
     </Layout>
   )
 }

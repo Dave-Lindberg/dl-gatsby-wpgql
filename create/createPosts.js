@@ -21,6 +21,10 @@ const GET_PAGES = `
                     postId
                     content
                     uri
+                    featuredImage {
+                        sourceUrl
+                        altText
+                    }
                 }
             }
         }
