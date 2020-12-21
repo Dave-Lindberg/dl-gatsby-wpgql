@@ -2,9 +2,15 @@ import React from "react"
 import { StaticQuery, graphql } from "gatsby"
 import { Box, Heading, Flex, Text } from "@chakra-ui/core";
 import { Link } from "gatsby"
-
-
 import MenuItem from "./MenuItem"
+
+/** @jsx jsx */
+import { jsx, css } from '@emotion/core'
+
+const base = css`
+  color: #d69e2e;
+`
+
 
 /**
  * Define MenuItem fragment and get all primary menu items.
@@ -32,6 +38,9 @@ const MENU_QUERY = graphql`
         }
     }
 `
+
+
+
 const Menu = ({ siteTitle }) => {
   const [show, setShow] = React.useState(false);
   const handleToggle = () => setShow(!show);
@@ -52,11 +61,14 @@ const Menu = ({ siteTitle }) => {
               justify="space-between"
               wrap="wrap"
               color="gray.60"
-              py={6}
+              py={4}
               >
                 <Flex align="center" mr={5}>
                   <Heading as="h1" size="md" color="yellow.500">
-                    <Link to="/">
+                    <Link to="/"
+                    css={css`
+                    ${base};
+                    `}>
                       {siteTitle}
                     </Link>
                   </Heading>

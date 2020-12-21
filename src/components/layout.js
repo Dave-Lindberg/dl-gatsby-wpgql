@@ -9,18 +9,9 @@ import React from "react"
 import PropTypes from "prop-types"
 import { useStaticQuery, graphql } from "gatsby"
 import Menu from "./Menu"
-import { theme, ThemeProvider, CSSReset } from "@chakra-ui/core";
-
-const breakpoints = ["360px", "768px", "1024px", "1440px"];
-breakpoints.sm = breakpoints[0];
-breakpoints.md = breakpoints[1];
-breakpoints.lg = breakpoints[2];
-breakpoints.xl = breakpoints[3];
-
-const newTheme = {
-  ...theme,
-  breakpoints
-};
+import { ThemeProvider, CSSReset, Box } from "@chakra-ui/core";
+import customTheme from "../gatsby-plugin-chakra-ui/theme"
+import "./layout.css"
 
 
 
@@ -37,7 +28,9 @@ const Layout = ({ children }) => {
 
   return (
     <>
-    <ThemeProvider theme={newTheme}>
+    <ThemeProvider theme={customTheme}>
+        <CSSReset />
+        <Box px={8} py={4}>
         <Menu siteTitle={data.site.siteMetadata.title} />
         <main>{children}</main>
         <footer>
@@ -45,6 +38,7 @@ const Layout = ({ children }) => {
           {` `}
           <a href="https://www.gatsbyjs.org">Gatsby</a>
         </footer>
+        </Box>
       </ThemeProvider>
     </>
   )
